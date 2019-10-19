@@ -25,7 +25,7 @@ SECRET_KEY = '9x)-c)p2l3ke7@^#7k==b^4w$+06cw=gp)g*67)wkn+4cp&m_@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,26 +80,26 @@ WSGI_APPLICATION = 'vesatogo.wsgi.application'
 
 #------*----------*--------* for heroku active this block *------*----------*--------#
 
-# import dj_database_url
+import dj_database_url
 
-# DATABASES = {
-#     'default': dj_database_url.config('DATABASE_URL')
-# }
+DATABASES = {
+    'default': dj_database_url.config('DATABASE_URL')
+}
 
 #------*----------*--------* for heroku active this block *------*----------*--------#
 
 #------*----------*--------* for normal run active this block *------*----------*--------#
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'vesatogo',
-        'USER': 'maulik',
-        'PASSWORD': 'root',
-        'HOST': '',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'vesatogo',
+#         'USER': 'maulik',
+#         'PASSWORD': 'root',
+#         'HOST': '',
+#         'PORT': '5432',
+#     }
+# }
 
 #------*----------*--------* for normal run active this block *------*----------*--------#
 
