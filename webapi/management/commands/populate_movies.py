@@ -13,8 +13,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         #latest Movies
         discover_url = 'https://api.themoviedb.org/3/discover/movie'
-        try:
-            for i in range(1,100):
+        for i in range(1,100):
+            try:
+            
 
                 discover_params = dict(
                     api_key='946f38ce21511b7502877838e75206c8',
@@ -96,7 +97,8 @@ class Command(BaseCommand):
                     instance_movies.save()
 
 
-        except Exception as e:
-            print(e)
+            except Exception as e:
+                print(e)
+                pass
 
                 
