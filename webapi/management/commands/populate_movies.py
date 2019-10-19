@@ -13,28 +13,28 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         #latest Movies
         discover_url = 'https://api.themoviedb.org/3/discover/movie'
+        try:
+            for i in range(1,100):
 
-        for i in range(1,100):
-
-            discover_params = dict(
-                api_key='946f38ce21511b7502877838e75206c8',
-                page=i,
-            )
-
-            discover = requests.get(url=discover_url, params=discover_params)
-            discover_data = discover.json()
-
-            for data in discover_data['results']:
-
-                movies_params = dict(
+                discover_params = dict(
                     api_key='946f38ce21511b7502877838e75206c8',
+                    page=i,
                 )
 
-                movies_url = 'https://api.themoviedb.org/3/movie/%s' %(str(data['id']))
-                movies = requests.get(url=movies_url, params=movies_params)
-                movies_data = movies.json()
-                
-                try:
+                discover = requests.get(url=discover_url, params=discover_params)
+                discover_data = discover.json()
+
+                for data in discover_data['results']:
+
+                    movies_params = dict(
+                        api_key='946f38ce21511b7502877838e75206c8',
+                    )
+
+                    movies_url = 'https://api.themoviedb.org/3/movie/%s' %(str(data['id']))
+                    movies = requests.get(url=movies_url, params=movies_params)
+                    movies_data = movies.json()
+                    
+                    
                     instance_movies = Movies(
                         adult = movies_data['adult'],
                         backdrop_path = movies_data['backdrop_path'],
@@ -96,7 +96,7 @@ class Command(BaseCommand):
                     instance_movies.save()
 
 
-                except Exception as e:
-                    print(e)
+        except Exception as e:
+            print(e)
 
                 
