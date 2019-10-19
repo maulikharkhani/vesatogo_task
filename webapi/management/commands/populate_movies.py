@@ -98,6 +98,6 @@ class Command(BaseCommand):
 
 
             except Exception as e:
-                pass
+                print(e)
 
                 
